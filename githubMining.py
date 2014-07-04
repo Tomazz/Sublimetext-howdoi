@@ -24,6 +24,9 @@ for x in range(len(queryList)):
 	#returns a collection of RepositorySearchResults
 	queriedRepos = search_repositories(queryList[x], sort=None, order=None, per_page=50, number=10)
 	miningDirectory = miningDirectory + "\\Query " + str(x) + "\\"
+	#additionally add a fille with the query for each folder
+	with open(miningDirectory + "\\" + "query","w") as queryFile:
+		queryFile.write(queryList[x])
     #create a directory with the name of the repo
     #create a "details.json" file and a zip of the repo in that directory
 	for repo in queriedRepos:
