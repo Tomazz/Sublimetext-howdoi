@@ -23,16 +23,18 @@ with open("GithubQueries","r") as queriesFile:
 for x in range(len(queryList)):
 	#returns a collection of RepositorySearchResults
 	queriedRepos = search_repositories(queryList[x], sort=None, order=None, per_page=50, number=10)
-	miningDirectory = miningDirectory + "\\Query " + str(x) + "\\"
+	subdirectory = "Query " + str(x) + "\\"
 	#additionally add a fille with the query for each folder
-	with open(miningDirectory + "\\" + "query","w") as queryFile:
+	if not os.path.exists(miningDirectory + subdirectory):
+		os.makedirs(miningDirectory + subdirectory)
+	with open(miningDirectory+ subdirectory + "query","w") as queryFile:
 		queryFile.write(queryList[x])
     #create a directory with the name of the repo
     #create a "details.json" file and a zip of the repo in that directory
 	for repo in queriedRepos:
 		print(repo.repository.name)
 		jsonRepoDict = repo.repository.to_json()
-		directory = miningDirectory + repo.repository.name
+		directory = miningDirectory + subdirectory + repo.repository.name
 		if not os.path.exists(directory):
 			os.makedirs(directory)
 		#create a zip of the repo
