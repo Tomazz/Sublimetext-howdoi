@@ -9,7 +9,7 @@ site = stackexchange.Site(stackexchange.StackOverflow,"wZjX24zp2Y3wv6THqhZyPQ(("
 site.be_inclusive()
 
 #create the directory for the mined StackOverflow code snippets
-directory = os.getcwd() + "\\" + "StackOverflowCode"
+directory = os.getcwd() + "\\" + "StackOverflowData"
 if not os.path.exists(directory):
 	os.makedirs(directory)
 

@@ -22,7 +22,7 @@ with open("SOConfig.txt","r") as tagFile:
     for line in tagFile:
         tagList = line.split(",")
 
-#create the directory for the mined StackOverflow code snippets
+
 directory = os.getcwd() + "\\StackOverflow\\AverageCommunitySize"
 if not os.path.exists(directory):
 	os.makedirs(directory)
@@ -35,7 +35,6 @@ infoDict["content"] = {}
 
 for tag in tagList:
 	infoDict["content"][tag] = 0
-
 
 for m in range(numberOfMonths):
 	fromDate = date - relativedelta(months= m + 1)
