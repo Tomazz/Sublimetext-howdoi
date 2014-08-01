@@ -36,7 +36,7 @@ bar_chart = pygal.Bar()
 bar_chart.title = 'Tags associated with tag: '+args["tag"]
 for element in tagList:
 	bar_chart.add(element[0],element[1])
-bar_chart.render_to_file(os.getcwd() + "\\chart_"+args["tag"]+".svg")
+bar_chart.render_to_file(os.getcwd() + "\\chart_relatedTags_"+args["tag"]+".svg")
 
 cursorDB.close()
 conn.close()
