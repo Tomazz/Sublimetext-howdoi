@@ -1,0 +1,1 @@
+place the plugin into the sublimetext3 plugin directory
