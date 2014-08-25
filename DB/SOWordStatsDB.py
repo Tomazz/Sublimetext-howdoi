@@ -70,7 +70,7 @@ def drawABarChart(wordCounter,directory,cmdArgs):
 	bar_chart_hw.render_to_file(directory + "\\howVSwhy_"+cmdArgs["tag"]+".svg")
 
 def readDBQuestionsToCounter(cmdArgs):
-	global questionCounter
+	global questionCounter #counts the number of questions returned by the query
 	conn = psycopg2.connect(dbname="internship2014", user="postgres", password=getpass.getpass(prompt="Password: ",stream=None))
 	cursorDB = conn.cursor('wordStatsCursor')
 	query1 = "SELECT body, title FROM posts WHERE tags LIKE '%<{tag}>%' AND score > {score} AND posttypeid = '1'".format(**cmdArgs) # "tag" and "score" are keys in the args dictionary. Load the tag from the dictionary into the query
@@ -134,4 +134,5 @@ def main():
 	drawABarChart(wordCounter,mainDir,args)
 
 questionCounter = 0
-main()
+if __name__ == '__main__':
+    main()

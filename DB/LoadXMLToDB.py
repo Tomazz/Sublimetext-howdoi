@@ -25,15 +25,15 @@ def readXML(path):
 			if attribute not in rowDict:
 				rowDict[attribute] = None
 
-		insertToDB(rowDict) #Insert the data to the database
+		insertToDB(rowDict,conn) #Insert the data to the database
 		element[0].clear()
 		element[1].clear()
 	conn.close()
 
-def insertToDB(rowDictionary):
-	cursorDB = conn.cursor()
-	attributesToStr = attributesList[0].lower()
-	attributesToInsert = "%("+attributesList[0]+")s"
+def insertToDB(rowDictionary,connection):
+	cursorDB = connection.cursor()
+	attributesToStr = attributesList[0].lower() # attributes needed for SQL part
+	attributesToInsert = "%("+attributesList[0]+")s" #above converted to format that psycopg2 can recognize and deal with when inserting values into the query
 	for x in range(1,len(attributesList)):
 		attributesToInsert +=",%("+attributesList[x]+")s"
 		attributesToStr+=","+attributesList[x].lower()
@@ -50,7 +50,7 @@ def insertToDB(rowDictionary):
 	query = ("INSERT INTO PostsTesting ("+attributesToStr+") VALUES ("+attributesToInsert+")")
 	#print(cursorDB.mogrify(query),rowDictionary)
 	cursorDB.execute(query,rowDictionary)
-	conn.commit()
+	connection.commit()
 	cursorDB.close()
 
 

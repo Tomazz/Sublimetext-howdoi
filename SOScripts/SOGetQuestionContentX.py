@@ -14,6 +14,7 @@ site = stackexchange.Site(stackexchange.StackOverflow,"wZjX24zp2Y3wv6THqhZyPQ(("
 site.be_inclusive()
 parser = etree.HTMLParser()
 
+
 #create the directory for the mined StackOverflow code snippets
 directory = os.getcwd() + "\\StackOverflowData"
 if not os.path.exists(directory):

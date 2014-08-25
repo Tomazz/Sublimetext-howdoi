@@ -1,11 +1,11 @@
-from urllib.parse import urlparse
-import google
+import google #edited
 import argparse
+import urllib
 
 
 def getSOUrls(query,returnIds = False):
 	""" Given a google query return the urls to the top 10 results """
-	results = google.search(query + " site:stackoverflow.com", tld='com', lang='en', num=10, start=0, stop=10, pause=2.0)
+	results = google.search(query, num=10, start=0, stop=10, pause=0.2)
 	urlList = []
 	for result in results:
 		urlList += [result]
@@ -21,7 +21,7 @@ def getSOUrls(query,returnIds = False):
 
 def getIDFromUrl(url):
 	""" Given a stackoverflow url return the question ID """
-	parsed = urlparse(url)
+	parsed = urllib.parse.urlparse(url)
 	ID = (parsed.path).split('/')[2]
 	return ID
 
