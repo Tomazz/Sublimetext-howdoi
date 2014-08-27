@@ -42,15 +42,17 @@ def splitIntoTerrierFiles(xmlpath):
 		rowDict = dict(element[1].attrib)
 		#if the record is a question
 		if rowDict["PostTypeId"] == "1":
+			if rowDict["FavoriteCount"] == None:
+				rowDict["FavoriteCount"] = 0
 			with open(trecFolder+"/"+rowDict["Id"]+".trec","w",encoding='utf-8') as trecFile:
 				trecFile.write("<DOC>\n")
 				trecFile.write("<DOCNO>"+rowDict["Id"]+"</DOCNO>\n")
 				trecFile.write("<SCORE>"+rowDict["Score"]+"</SCORE>\n")
-				#trecFile.write("<FAVORITECOUNT>"+rowDict["FavoriteCount"]+"</FAVORITECOUNT>")
+				trecFile.write("<FAVORITECOUNT>"+rowDict["FavoriteCount"]+"</FAVORITECOUNT>")
 				trecFile.write("<VIEWCOUNT>"+rowDict["ViewCount"]+"</VIEWCOUNT>\n")
 				#trecFile.write("<ANSWERCOUNT>"+rowDict["AnswerCount"]+"</ANSWERCOUNT>\n")		
-				trecFile.write("terrierascores\n")#aggregate the scores of the answers here. Put their average at the end
-				trecFile.write("<COMMENTCOUNT>"+rowDict["CommentCount"]+"</COMMENTCOUNT>\n")
+				trecFile.write("terrierascores")#aggregate the scores of the answers here. Put their average at the end
+				trecFile.write("\n<COMMENTCOUNT>"+rowDict["CommentCount"]+"</COMMENTCOUNT>\n")
 				trecFile.write("<TITLE>"+rowDict["Title"]+"</TITLE>\n")
 				trecFile.write("<QUESTION>"+rowDict["Body"]+"</QUESTION>\n")
 				trecFile.write("<TAGS>"+_prepareTags(rowDict["Tags"])+"</TAGS>\n")
@@ -77,6 +79,9 @@ def closeTRECFiles():
 	trecFolder = os.getcwd()+"/trec"
 	files = [ f for f in os.listdir(trecFolder) if os.path.isfile(os.path.join(trecFolder,f)) ]
 	for f in files:
+		base=os.path.basename(f)
+		ID = os.path.splitext(base)[0]
+		_produceTheAverage(ID)
 		with open(f,"a",encoding='utf-8') as trecFile:
 			trecFile.write("</DOC>")
 
