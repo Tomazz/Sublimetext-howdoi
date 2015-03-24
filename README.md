@@ -1,11 +1,19 @@
 Tool similar to howdoi. Was supposed to work as a plugin for sublimetext editor
 =====================
 
-The program's purpose was to evaluate the usefulness of a tool for programmers. The target user groups were people who
--forgot certain snippets of code
--don't want to browse web to do Stackoverflow search
--scientists from various fields who would like to search for useful software patterns
--beginners
+Main ideas that we were to investigate during the internship :
+- Domain Specific Languages - sometimes we need a very simple, easy to learn solution that may be limited but at least does its job very well
+- Compile the code from answers or questions
+- Mine Github
+- **Use Stack Overflow to search for programming related questions and answers. Maybe retrieve the code from answers.**
+
+This program's purpose was to evaluate the usefulness of a tool for programmers from the last point
+ 
+The target user groups were people who
+- forgot certain snippets of code
+- don't want to browse web to do Stackoverflow search
+- scientists from various fields who would like to search for useful software patterns
+- beginners
 They can do it directly in the text editor with this plugin.
 
 Notes:
