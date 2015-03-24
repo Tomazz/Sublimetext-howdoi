@@ -18,7 +18,7 @@ The target user groups were people who
 - beginners
 They can do it directly in the text editor with this plugin.
 
-Notes:
+####Notes:####
 At the moment it looks like the github3.py library is the best for interfacing with the Github APIv3:
 https://github.com/sigmavirus24/github3.py
 
