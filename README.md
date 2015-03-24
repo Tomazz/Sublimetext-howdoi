@@ -1,6 +1,6 @@
-#A Sublimetext editor plugin similar to howdoi command line tool.# 
+#A Sublimetext editor plugin similar to howdoi command line tool.
 
-###It was developed for testing of several hypotheses from the research internship in the School of Computing Science at the University of Glasgow.###
+###It was developed for testing of several hypotheses from the research internship in the School of Computing Science at the University of Glasgow.
 
 
 Main ideas that we were to investigate during the internship :
